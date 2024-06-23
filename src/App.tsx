@@ -1,20 +1,17 @@
-import { Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
-import Store from "./pages/Store"
-import Navbar from "./components/Navbar"
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Store from "./pages/Store";
+import Layout from "./components/layout/Layout";
 
 function App() {
- 
-
   return (
-    <>
-    <Navbar/>
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/store" element={<Store/>}/>
-    </Routes>
-    </>
-  )
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/store" element={<Store />} />
+      </Routes>
+    </Layout>
+  );
 }
 
-export default App
+export default App;
