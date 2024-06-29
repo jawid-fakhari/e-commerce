@@ -18,29 +18,13 @@ function Product() {
               alt=""
             />
             <Button
-            style={{padding: "6px 12px"}} //creare un nuovo custom props
-              variant={"primary"} //uso di variant nel nostro componente che lo passa come props
+            className='mt-2 w-full ip-4'
+              variant="primary" //uso di variant nel nostro componente che lo passa come props
               onClick={() => {
                 alert("Product added to the Card");
               }}
             >
-              Add to Card
-            </Button>
-            <Button
-              variant={"secondary"}
-              onClick={() => {
-                alert("Product added to the Card");
-              }}
-            >
-              Add to Card
-            </Button>
-            <Button
-              variant={"pashmak"}
-              onClick={() => {
-                alert("Product added to the Card");
-              }}
-            >
-              Add to Card
+              Add to Cart
             </Button>
           </div>
           <div className="col-span-8 py-2">
