@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import Container from '../../components/container/Container'
+import Button from '../../components/button/Button';
 
 
 function Product() {
@@ -16,7 +17,11 @@ function Product() {
               src="https://www.evosmart.it/wp-content/uploads/2023/08/nokia-150-960x540.jpg"
               alt=""
             />
-            <button>Add to card</button>
+            <Button onClick={() => {
+                alert('Product added to the Card')
+            }}>
+                Add to Card
+            </Button>
           </div>
           <div className="col-span-8 py-2">
             <h1 className='text-xl font-semibold'>Product Name</h1>
