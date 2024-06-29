@@ -1,6 +1,6 @@
 import React from 'react'
-import ProductItem from '../components/productItem/ProductItem'
-import Container from '../components/container/Container';
+import ProductItem from '../../components/productItem/ProductItem'
+import Container from '../../components/container/Container';
 
 function Store() {
   return (
