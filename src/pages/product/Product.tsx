@@ -17,14 +17,33 @@ function Product() {
               src="https://www.evosmart.it/wp-content/uploads/2023/08/nokia-150-960x540.jpg"
               alt=""
             />
-            <Button onClick={() => {
-                alert('Product added to the Card')
-            }}>
-                Add to Card
+            <Button
+              variant={"primary"} //uso di variant nel nostro componente che lo passa come props
+              onClick={() => {
+                alert("Product added to the Card");
+              }}
+            >
+              Add to Card
+            </Button>
+            <Button
+              variant={"secondary"}
+              onClick={() => {
+                alert("Product added to the Card");
+              }}
+            >
+              Add to Card
+            </Button>
+            <Button
+              variant={"pashmak"}
+              onClick={() => {
+                alert("Product added to the Card");
+              }}
+            >
+              Add to Card
             </Button>
           </div>
           <div className="col-span-8 py-2">
-            <h1 className='text-xl font-semibold'>Product Name</h1>
+            <h1 className="text-xl font-semibold">Product Name</h1>
             <div>
               <p>Price: 30$</p>
               <p>
