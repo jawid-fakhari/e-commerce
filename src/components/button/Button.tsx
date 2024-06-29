@@ -10,13 +10,14 @@ type TButton = ComponentProps<"button"> & {
 
 
 // ...rest passa tutto il resto dei props del button, cosi non è necessario passare uno per uno i props l'esempio di qui è onclick
-function Button({children, variant, ...rest}: TButton ) { //passare il variante come props al func 
+function Button({children, variant, style, ...rest}: TButton ) { //passare il variante come props al func - passare il nuovo costum props
   return (
     //chiamare il variante all'interno della func checkVariant per avere il return di cio che vogliamo, qui un oggetto di stile
-    <button style= {checkVariant(variant)} {...rest}> 
-        {children}
+    // chimare il nuovo costum props e mettere tutto all'interno di style
+    <button {...rest} style={{...style, ...checkVariant(variant)}}>
+      {children}
     </button>
-  )
+  );
 }
 
 export default Button

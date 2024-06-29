@@ -18,6 +18,7 @@ function Product() {
               alt=""
             />
             <Button
+            style={{padding: "6px 12px"}} //creare un nuovo custom props
               variant={"primary"} //uso di variant nel nostro componente che lo passa come props
               onClick={() => {
                 alert("Product added to the Card");
