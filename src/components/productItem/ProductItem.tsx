@@ -1,21 +1,22 @@
 import React from "react";
+import { Products } from "../../type/Servers";
 
-function ProductItem() {
+type TProductItem = Products;
+
+function ProductItem({title,price,image,description}:TProductItem) {
   return (
     <div className="shadow border rounded pb-2">
       <img
         className="rounded-t"
-        src="https://www.evosmart.it/wp-content/uploads/2023/08/nokia-150-960x540.jpg"
+        src={image}
         alt=""
       />
-      <div className="flex justify-between p-4 mt-2">
-        <h3>Nome del prodotto</h3>
-        <span>55$</span>
+      <div className="p-4 mt-2">
+        <h3 className="py-2">{title}</h3>
+        <p className="text-xl font-semibold py-2">{price}$</p>
       </div>
       <div className="px-4 mt-1">
-        <p className="line-clamp-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum optio qui nesciunt officiis repellat!
-        </p>
+        <p className="line-clamp-2">{description}</p>
       </div>
     </div>
   );

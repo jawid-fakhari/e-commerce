@@ -3,12 +3,13 @@ import ProductItem from "../../components/productItem/ProductItem";
 import Container from "../../components/container/Container";
 import { Link } from "react-router-dom";
 import { getProducts } from "../../services/api";
+import { Products } from "../../type/Servers";
 
 //pagina Store che mostra tutti i prodotti nello store
 
 function Store() {
-  //con useState settiamo i products
-  const [products, setProducts] = useState([]);
+  //con useState settiamo i products, e dentro <Products[]> importiamo il type dei prodotti dal Servers.ts
+  const [products, setProducts] = useState<Products[]>([]);
 
   //all'interno del useEffect importo func getProduct da api.ts e con metodo then prendo dati e setto products dai data ricevuti
   useEffect(() => {
@@ -25,7 +26,7 @@ function Store() {
         <div className="grid grid-cols-4 gap-7">
           {products.map((item) => (
             <Link key={item.id} to={`/product/${item.id}`}>
-              <ProductItem />
+              <ProductItem {...item}/>
             </Link>
           ))}
         </div>
