@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductItem from "../../components/productItem/ProductItem";
 import Container from "../../components/container/Container";
 import { Link } from "react-router-dom";
+import { getProducts } from "../../services/api";
 
 function Store() {
+  //con useState settiamo i products
+  const [products, setProducts] = useState([]);
+
+  //all'interno del useEffect importo func getProduct da api.ts e con metodo then prendo dati e setto products dai data ricevuti
+  useEffect(() =>{
+    getProducts().then((result) => {
+     setProducts(result);
+    })
+    
+  }, [])
+
+  console.log(products);
+  
+
   return (
     <>
       <Container>
