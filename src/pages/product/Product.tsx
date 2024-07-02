@@ -1,12 +1,23 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import Container from '../../components/container/Container'
-import Button from '../../components/button/Button';
-
+import { useParams } from "react-router-dom";
+import Container from "../../components/container/Container";
+import Button from "../../components/button/Button";
+import { getProduct } from "../../services/api";
+import { useEffect, useState } from "react";
+import { Products } from "../../type/Servers";
 
 function Product() {
+  // uso del useParams per prendere l'id dalla url per richiamare il prodotto corretto dal server
+  const params = useParams<{id:string}>();
+  // uso dello useState per inizializzare il prodotto con il dato ricevuto dal server usando useEffect (per richiamare la funzione getProduct quando il componente viene montato)  e setto il prodotto nello stato quando viene ricevuto il dato dal server
+  // il type del product è quello che abbiamo dichiarato per Products nel server, e qui perche abbiamo solo un prodotto non mettiamo [] come l'abbiamo fatto nello store
+  const [product, setProduct] = useState<Products>();
 
-    const params = useParams()
+  useEffect(() => {
+    // Casting the 'id' property of 'params' object to string type with params.id as string
+    getProduct(params.id as string).then((data) => {
+      setProduct(data);
+    });
+  }, []);
 
   return (
     <div>
@@ -14,11 +25,11 @@ function Product() {
         <div className="h-auto shadow mt-4 grid grid-cols-12">
           <div className="col-span-4 p-4">
             <img
-              src="https://www.evosmart.it/wp-content/uploads/2023/08/nokia-150-960x540.jpg"
+              src={product?.image}
               alt=""
             />
             <Button
-            className='mt-2 w-full ip-4'
+              className="mt-2 w-full ip-4"
               variant="primary" //uso di variant nel nostro componente che lo passa come props
               onClick={() => {
                 alert("Product added to the Card");
@@ -28,14 +39,10 @@ function Product() {
             </Button>
           </div>
           <div className="col-span-8 py-2">
-            <h1 className="text-xl font-semibold">Product Name</h1>
+            <h1 className="text-xl font-semibold">{product?.title}</h1>
             <div>
-              <p>Price: 30$</p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-                fugiat, commodi, ad error quam magnam recusandae reiciendis ex
-                inventore aliquam quibusdam praesentium, optio quaerat et.
-              </p>
+              <p>{product?.price}</p>
+              <p>{product?.description}</p>
             </div>
           </div>
         </div>
@@ -44,4 +51,4 @@ function Product() {
   );
 }
 
-export default Product
+export default Product;
