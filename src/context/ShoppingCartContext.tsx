@@ -12,9 +12,8 @@ interface ShoppingCartContext {
 }
 
 // Creating a context for the shopping cart
-export const ShoppingCartContext = createContext<ShoppingCartContext>({
-  cartItems: [],
-});
+// anche in questo modo possiamo settare il type del object che è più pulito
+export const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
 // Defining the ShoppingCartProvider component
 export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
