@@ -3,14 +3,17 @@ import Container from "../../components/container/Container";
 import Button from "../../components/button/Button";
 import { getProduct } from "../../services/api";
 import { useEffect, useState } from "react";
-import { Products } from "../../type/Servers";
+import { IProduct } from "../../type/Servers";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
 function Product() {
   // uso del useParams per prendere l'id dalla url per richiamare il prodotto corretto dal server
   const params = useParams<{id:string}>();
   // uso dello useState per inizializzare il prodotto con il dato ricevuto dal server usando useEffect (per richiamare la funzione getProduct quando il componente viene montato)  e setto il prodotto nello stato quando viene ricevuto il dato dal server
   // il type del product è quello che abbiamo dichiarato per Products nel server, e qui perche abbiamo solo un prodotto non mettiamo [] come l'abbiamo fatto nello store
-  const [product, setProduct] = useState<Products>();
+  const [product, setProduct] = useState<IProduct>();
+
+  const { cartItems} = useShoppingCartContext();
 
   useEffect(() => {
     // Casting the 'id' property of 'params' object to string type with params.id as string
