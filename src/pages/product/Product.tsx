@@ -13,7 +13,7 @@ function Product() {
   // il type del product è quello che abbiamo dichiarato per Products nel server, e qui perche abbiamo solo un prodotto non mettiamo [] come l'abbiamo fatto nello store
   const [product, setProduct] = useState<IProduct>();
 
-  const { cartItems} = useShoppingCartContext();
+  const {  handleIncreaseProductQty, cartItems } = useShoppingCartContext();
 
   useEffect(() => {
     // Casting the 'id' property of 'params' object to string type with params.id as string
@@ -21,6 +21,9 @@ function Product() {
       setProduct(data);
     });
   }, []);
+
+  console.log(cartItems);
+  
 
   return (
     <div>
@@ -32,11 +35,9 @@ function Product() {
               alt=""
             />
             <Button
+              onClick={() => handleIncreaseProductQty(parseInt(params.id as string))}
               className="mt-2 w-full ip-4"
               variant="primary" //uso di variant nel nostro componente che lo passa come props
-              onClick={() => {
-                alert("Product added to the Card");
-              }}
             >
               Add to Cart
             </Button>
