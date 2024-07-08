@@ -8,12 +8,12 @@ import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
 function Product() {
   // uso del useParams per prendere l'id dalla url per richiamare il prodotto corretto dal server
-  const params = useParams<{id:string}>();
+  const params = useParams<{ id: string }>();
   // uso dello useState per inizializzare il prodotto con il dato ricevuto dal server usando useEffect (per richiamare la funzione getProduct quando il componente viene montato)  e setto il prodotto nello stato quando viene ricevuto il dato dal server
   // il type del product è quello che abbiamo dichiarato per Products nel server, e qui perche abbiamo solo un prodotto non mettiamo [] come l'abbiamo fatto nello store
   const [product, setProduct] = useState<IProduct>();
 
-  const {  handleIncreaseProductQty, cartItems } = useShoppingCartContext();
+  const { handleIncreaseProductQty, cartItems, handleDecreaseProductQty } = useShoppingCartContext();
 
   useEffect(() => {
     // Casting the 'id' property of 'params' object to string type with params.id as string
@@ -22,24 +22,32 @@ function Product() {
     });
   }, []);
 
-  console.log(cartItems);
   
+
+  console.log(cartItems);
 
   return (
     <div>
       <Container>
         <div className="h-auto shadow mt-4 grid grid-cols-12">
           <div className="col-span-4 p-4">
-            <img
-              src={product?.image}
-              alt=""
-            />
+            <img src={product?.image} alt="" />
             <Button
-              onClick={() => handleIncreaseProductQty(parseInt(params.id as string))}
+              onClick={() =>
+                handleIncreaseProductQty(parseInt(params.id as string))
+              }
               className="mt-2 w-full ip-4"
               variant="primary" //uso di variant nel nostro componente che lo passa come props
             >
               Add to Cart
+            </Button>
+            <Button 
+            onClick={() => 
+              handleDecreaseProductQty(parseInt(params.id as string))
+            }
+              // TODO: Implement remove from cart logic
+            className="mt-2 w-full ip-4" variant="primary">
+              Remove from Cart
             </Button>
           </div>
           <div className="col-span-8 py-2">

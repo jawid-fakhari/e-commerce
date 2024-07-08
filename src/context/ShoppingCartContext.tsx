@@ -16,6 +16,7 @@ interface CartItem {
 interface ShoppingCartContext {
   cartItems: CartItem[];
   handleIncreaseProductQty: (id: number) => void;
+  handleDecreaseProductQty: (id: number) => void;
 }
 
 // Creating a context for the shopping cart
@@ -36,11 +37,12 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   // Function to add an item to the cart
+  let selectedItem;
   const handleIncreaseProductQty = (id: number) => {
     // find the product in cartItems by its id, increment its quantity, and update the cartItems state
     setCartItems((currentItems) => {
-
-      let selectedItem = currentItems.find((item) => item.id == id);
+      
+      selectedItem = currentItems.find((item) => item.id == id);
 
       if (selectedItem == null) {
         return [...currentItems, { id: id, quantity: 1 }];
@@ -56,11 +58,32 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
     });
   };
 
+  const handleDecreaseProductQty = (id: number) => {
+    setCartItems((currentItems)=> {
+
+      selectedItem = currentItems.find((item) => item.id == id);
+      if (selectedItem?.quantity === 1) {
+        return currentItems.filter((item) => item.id!== id);  // remove item from cartItems if quantity is 1
+      }
+      if(selectedItem == null) {
+        return [...currentItems]
+      }else {
+        return currentItems.map((item) => {
+          if (item.id == id) {
+            return {...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
+
   // Returning the IShoppingCartContext.Provider with the cartItems state
   return (
     // The ShoppingCartProvider component renders its children, passing the cartItems state as a prop
     <ShoppingCartContext.Provider
-      value={{ cartItems, handleIncreaseProductQty }}
+      value={{ cartItems, handleIncreaseProductQty, handleDecreaseProductQty }}
     >
       {/* The rest of the ShoppingCartProvider component */}
       {children}
