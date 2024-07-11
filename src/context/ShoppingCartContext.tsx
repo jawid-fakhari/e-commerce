@@ -18,6 +18,7 @@ interface ShoppingCartContext {
   handleIncreaseProductQty: (id: number) => void;
   handleDecreaseProductQty: (id: number) => void;
   getProductQty: (id: number) => number;
+  handleRemoveItemFromCart: (id: number) => void;
 }
 
 // Creating a context for the shopping cart
@@ -84,11 +85,15 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
     return cartItems.find((item) => item.id == id)?.quantity || 0;
   };
 
+  const handleRemoveItemFromCart = (id: number) => {
+    setCartItems((currentItems) => currentItems.filter((item) => item.id != id))
+  };
+
   // Returning the IShoppingCartContext.Provider with the cartItems state
   return (
     // The ShoppingCartProvider component renders its children, passing the cartItems state as a prop
     <ShoppingCartContext.Provider
-      value={{ cartItems, handleIncreaseProductQty, handleDecreaseProductQty, getProductQty }}
+      value={{ cartItems, handleIncreaseProductQty, handleDecreaseProductQty, getProductQty, handleRemoveItemFromCart }}
     >
       {/* The rest of the ShoppingCartProvider component */}
       {children}

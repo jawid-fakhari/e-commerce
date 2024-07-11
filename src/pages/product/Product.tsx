@@ -18,6 +18,7 @@ function Product() {
     cartItems,
     handleDecreaseProductQty,
     getProductQty,
+    handleRemoveItemFromCart,
   } = useShoppingCartContext();
 
   useEffect(() => {
@@ -45,29 +46,40 @@ function Product() {
                 Add to Cart
               </Button>
             ) : (
-              <div className="grid grid-cols-3">
+              <>
+                <div className="grid grid-cols-3">
+                  <Button
+                    className="mt-2 w-full"
+                    variant="primary" //uso di variant nel nostro componente che lo passa come props
+                    onClick={() =>
+                      handleIncreaseProductQty(parseInt(params.id as string))
+                    }
+                  >
+                    +
+                  </Button>
+                  <span className="flex justify-center items-center">
+                    {getProductQty(parseInt(params.id as string))}
+                  </span>
+                  <Button
+                    className="mt-2 w-full"
+                    variant="primary"
+                    onClick={() =>
+                      handleDecreaseProductQty(parseInt(params.id as string))
+                    }
+                  >
+                    -
+                  </Button>
+                </div>
                 <Button
-                  className="mt-2 w-full"
-                  variant="primary" //uso di variant nel nostro componente che lo passa come props
+                  className="mt-2 w-full ip-4"
+                  variant="pashmak" //uso di variant nel nostro componente che lo passa come props
                   onClick={() =>
-                    handleIncreaseProductQty(parseInt(params.id as string))
+                    handleRemoveItemFromCart(parseInt(params.id as string))
                   }
                 >
-                  +
+                  Remove from Cart
                 </Button>
-                <span className="flex justify-center items-center">
-                  {getProductQty(parseInt(params.id as string))}
-                </span>
-                <Button
-                  className="mt-2 w-full"
-                  variant="primary"
-                  onClick={() =>
-                    handleDecreaseProductQty(parseInt(params.id as string))
-                  }
-                >
-                  -
-                </Button>
-              </div>
+              </>
             )}
           </div>
           <div className="col-span-8 py-2">
