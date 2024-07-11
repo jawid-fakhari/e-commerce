@@ -13,7 +13,7 @@ function Product() {
   // il type del product è quello che abbiamo dichiarato per Products nel server, e qui perche abbiamo solo un prodotto non mettiamo [] come l'abbiamo fatto nello store
   const [product, setProduct] = useState<IProduct>();
 
-  const { handleIncreaseProductQty, cartItems, handleDecreaseProductQty } = useShoppingCartContext();
+  const { handleIncreaseProductQty, cartItems, handleDecreaseProductQty, getProductQty } = useShoppingCartContext();
 
   useEffect(() => {
     // Casting the 'id' property of 'params' object to string type with params.id as string
@@ -41,12 +41,15 @@ function Product() {
             >
               Add to Cart
             </Button>
-            <Button 
-            onClick={() => 
-              handleDecreaseProductQty(parseInt(params.id as string))
-            }
+            {getProductQty(parseInt(params.id as string))}
+            <Button
+              onClick={() =>
+                handleDecreaseProductQty(parseInt(params.id as string))
+              }
               // TODO: Implement remove from cart logic
-            className="mt-2 w-full ip-4" variant="primary">
+              className="mt-2 w-full ip-4"
+              variant="primary"
+            >
               Remove from Cart
             </Button>
           </div>
