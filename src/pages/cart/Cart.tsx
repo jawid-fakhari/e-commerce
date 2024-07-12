@@ -4,23 +4,23 @@ import Button from "../../components/button/Button";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
 function Cart() {
-  const {cartItems} = useShoppingCartContext();
+  const { cartItems } = useShoppingCartContext();
 
   return (
     <Container>
       <div className="">
-        <CartItem />
-        <CartItem />
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        {cartItems.map((item) => (
+          <CartItem {...item}/>
+        ))}
       </div>
       <div className="">
         <p>Full Price: 1000$</p>
         <p>Discount: 53$</p>
         <p>Price: 947$</p>
       </div>
-      <Button className="" variant="success">Order</Button>
+      <Button className="" variant="success">
+        Order
+      </Button>
     </Container>
   );
 }
