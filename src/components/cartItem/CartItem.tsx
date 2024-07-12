@@ -3,14 +3,13 @@ import Button from "../button/Button";
 import { getProduct } from "../../services/api";
 import { IProduct } from "../../type/Servers";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface ICartItem {
   id: number;
   quantity: number;
 }
 function CartItem({ id, quantity }: ICartItem) {
-
   const [product, setProduct] = useState<IProduct>();
 
   const {
@@ -27,33 +26,29 @@ function CartItem({ id, quantity }: ICartItem) {
 
   return (
     <div className="flex items-start gap-x-7 my-5">
-      <img className="rounded w-1/4" src={product?.image} alt="" />
+      <Link to={`/product/${id}`}>
+        <img className="rounded w-1/4" src={product?.image} alt="" />
+      </Link>
       <div className="">
         <h1 className="font-semibold">{product?.title}</h1>
         <Button
           className="w-full my-1"
           variant="primary"
-          onClick={() =>
-            handleIncreaseProductQty(id)
-          }
+          onClick={() => handleIncreaseProductQty(id)}
         >
           +
         </Button>
         <Button
           className="w-full my-1"
           variant="secondary"
-          onClick={() =>
-            handleDecreaseProductQty(id)
-          }
+          onClick={() => handleDecreaseProductQty(id)}
         >
           -
         </Button>
         <Button
           className="w-full my-1"
           variant="pashmak"
-          onClick={() =>
-            handleRemoveItemFromCart(id)
-          }
+          onClick={() => handleRemoveItemFromCart(id)}
         >
           🗑️
         </Button>
