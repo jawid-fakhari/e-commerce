@@ -1,5 +1,6 @@
 // Importing necessary modules from 'react'
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 // Defining the interface for the ShoppingCartProvider props
 interface ShoppingCartProvider {
@@ -37,7 +38,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
   // Initializing the cartItems state with an empty array (empty cart)
   // setCartItems is used to update the cartItems state when items are added or removed from the cart
   // The updated cartItems state will be available to all consumers of the IShoppingCartContext
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("cartItems",[]);
 
   // Function to add an item to the cart
   let selectedItem;
