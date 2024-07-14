@@ -1,5 +1,5 @@
 // Importing necessary modules from 'react'
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 // Defining the interface for the ShoppingCartProvider props
@@ -21,6 +21,9 @@ interface ShoppingCartContext {
   getProductQty: (id: number) => number;
   handleRemoveItemFromCart: (id: number) => void;
   getCartItemsQty: number;
+  isLogin: boolean;
+  handleLogin: () => void;
+  handleLogout: () => void;
 }
 
 // Creating a context for the shopping cart
@@ -34,10 +37,7 @@ export const useShoppingCartContext = () => {
 
 // Defining the IShoppingCartProvider component
 export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
-  // Using useState to manage the cartItems state
-  // Initializing the cartItems state with an empty array (empty cart)
-  // setCartItems is used to update the cartItems state when items are added or removed from the cart
-  // The updated cartItems state will be available to all consumers of the IShoppingCartContext
+
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("cartItems",[]);
 
   // Function to add an item to the cart
@@ -93,6 +93,15 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
 
   const getCartItemsQty = cartItems.reduce((totalQty, item) => totalQty + item.quantity , 0);
 
+  const [isLogin, setIsLogin] = useState(false);
+
+  const handleLogin = () => {
+    setIsLogin(true);
+  }
+  const handleLogout = () => {
+    setIsLogin(false);
+  }
+
   // Returning the IShoppingCartContext.Provider with the cartItems state
   return (
     // The ShoppingCartProvider component renders its children, passing the cartItems state as a prop
@@ -104,6 +113,9 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
         getProductQty,
         handleRemoveItemFromCart,
         getCartItemsQty,
+        isLogin,
+        handleLogin,
+        handleLogout,
       }}
     >
       {/* The rest of the ShoppingCartProvider component */}
