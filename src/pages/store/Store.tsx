@@ -3,13 +3,13 @@ import ProductItem from "../../components/productItem/ProductItem";
 import Container from "../../components/container/Container";
 import { Link } from "react-router-dom";
 import { getProducts } from "../../services/api";
-import { IProduct } from "../../type/Servers";
+import { Products } from "../../type/Servers";
 
 //pagina Store che mostra tutti i prodotti nello store
 
 function Store() {
     //con useState settiamo i products, e dentro <IProducts[]> importiamo il type dei prodotti dal Servers.ts
-    const [products, setProducts] = useState<IProduct[]>([]);
+    const [products, setProducts] = useState<Products[]>([]);
 
     //all'interno del useEffect importo func getProduct da api.ts e con metodo then prendo dati e setto products dai data ricevuti
     useEffect(() => {
@@ -31,6 +31,7 @@ function Store() {
                             to={`/product/${item.id}`}
                             className="block transition-transform transform hover:scale-105"
                         >
+                            {/* passare tutto data dei prodotti al comp. product item */}
                             <ProductItem {...item} />
                         </Link>
                     ))}

@@ -1,6 +1,7 @@
-import { IProduct } from "../../type/Servers";
+import { Products } from "../../type/Servers";
 
-type TProductItem = IProduct;
+//product item type è la stessa del type di products
+type TProductItem = Products;
 
 function ProductItem({ title, price, image, description }: TProductItem) {
     return (

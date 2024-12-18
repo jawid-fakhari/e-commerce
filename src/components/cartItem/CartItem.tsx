@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../button/Button";
 import { getProduct } from "../../services/api";
-import { IProduct } from "../../type/Servers";
+import { Products } from "../../type/Servers";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ interface ICartItem {
     quantity: number;
 }
 function CartItem({ id, quantity }: ICartItem) {
-    const [product, setProduct] = useState<IProduct>();
+    const [product, setProduct] = useState<Products>();
 
     const {
         handleIncreaseProductQty,
@@ -33,35 +33,36 @@ function CartItem({ id, quantity }: ICartItem) {
                     alt={product?.title}
                 />
             </Link>
-            <div className="flex-1">
+            <div className="flex-auto">
                 <h1 className="font-semibold text-lg text-gray-800">
                     {product?.title}
                 </h1>
-                <div className="mt-3 space-y-2">
+                <div className="flex flex-col mt-3 space-y-2">
                     <Button
-                        className="w-full py-2 font-medium rounded-md transition"
+                        className="w-1/3 py-2 font-medium rounded-md transition"
                         variant="primary"
                         onClick={() => handleIncreaseProductQty(id)}
                     >
                         +
                     </Button>
                     <Button
-                        className="w-full py-2 font-medium rounded-md transition"
+                        className="w-1/3 py-2 font-medium rounded-md transition"
                         variant="secondary"
                         onClick={() => handleDecreaseProductQty(id)}
                     >
                         -
                     </Button>
                     <Button
-                        className="w-full py-2 font-medium rounded-md transition"
+                        className="w-1/3 py-2 font-medium rounded-md transition"
                         variant="warning"
                         onClick={() => handleRemoveItemFromCart(id)}
                     >
                         🗑️
                     </Button>
-                </div>
-                <div className="w-full px-4 py-2 mt-3 border-t text-center font-medium text-gray-700">
-                    Quantity: {quantity}
+
+                    <div className="w-full px-4 py-2 mt-3 border-t text-center font-medium text-gray-700">
+                        Quantity: {quantity}
+                    </div>
                 </div>
             </div>
         </div>

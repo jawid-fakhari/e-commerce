@@ -8,7 +8,7 @@ function Cart() {
 
     return (
         <Container>
-            <div className="bg-white p-6 rounded-lg shadow-lg mt-6">
+            <div className="bg-white p-6 rounded-lg shadow-lg mt-6 w-1/2 mx-auto">
                 <div className="space-y-4">
                     {cartItems.map((item) => (
                         <CartItem key={item.id} {...item} />
