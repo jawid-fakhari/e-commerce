@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 
-type TVariant = "primary" | "secondary" | "pashmak" | "success";
+type TVariant = "primary" | "secondary" | "warning" | "success";
 
 // Il tipo ComponentProps è un tipo utility fornito da TypeScript per ottenere i tipi delle proprietà di un componente React o di un elemento JSX nativo. Quando usi ComponentProps<"button">, stai ottenendo il tipo delle proprietà di un elemento HTML <button>.
 type TButton = ComponentProps<"button"> & {
@@ -8,20 +8,15 @@ type TButton = ComponentProps<"button"> & {
 };
 
 // ...rest passa tutto il resto dei props del button, cosi non è necessario passare uno per uno i props l'esempio di qui è onclick
-function Button({ children, variant, ...rest }: TButton) {
+function Button({ children, className, variant, ...rest }: TButton) {
     //passare il variante come props al func - passare il nuovo costum props
     return (
         //chiamare il variante all'interno della func checkVariant per avere il return di cio che vogliamo, qui un oggetto di stile
         //se vogliamo chiamare un stile o una funzione che va applicato su tutte le copie
         <button
             {...rest}
+            className={`button ${className}`}
             style={{
-                borderRadius: "6px",
-                padding: "8px 16px",
-                fontSize: "16px",
-                fontWeight: "500",
-                cursor: "pointer",
-                transition: "background-color 0.3s ease",
                 ...checkVariant(variant),
             }}
         >
@@ -56,7 +51,7 @@ function checkVariant(variant?: TVariant) {
             color: "white",
         };
     }
-    if (variant === "pashmak") {
+    if (variant === "warning") {
         return {
             ...baseStyle,
             backgroundColor: "#9b2321",
@@ -70,4 +65,6 @@ function checkVariant(variant?: TVariant) {
             color: "white",
         };
     }
+    //se non è definito nessun variante, ritorna l'oggetto di stile base
+    return baseStyle;
 }

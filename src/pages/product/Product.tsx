@@ -40,7 +40,7 @@ function Product() {
                         />
                         {getProductQty(parseInt(params.id as string)) === 0 ? (
                             <Button
-                                className="mt-4 w-full py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition"
+                                className="mt-4 w-full py-2  font-medium rounded-md transition"
                                 variant="primary"
                                 onClick={() =>
                                     handleIncreaseProductQty(
@@ -54,7 +54,7 @@ function Product() {
                             <>
                                 <div className="grid grid-cols-3 gap-2 w-full mt-4">
                                     <Button
-                                        className="py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition"
+                                        className="py-2 font-medium rounded-md transition"
                                         variant="primary"
                                         onClick={() =>
                                             handleIncreaseProductQty(
@@ -70,7 +70,7 @@ function Product() {
                                         )}
                                     </span>
                                     <Button
-                                        className="py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition"
+                                        className="py-2 font-medium rounded-md transition"
                                         variant="primary"
                                         onClick={() =>
                                             handleDecreaseProductQty(
@@ -82,8 +82,8 @@ function Product() {
                                     </Button>
                                 </div>
                                 <Button
-                                    className="mt-4 w-full py-2 bg-red-500 text-white font-medium rounded-md hover:bg-red-600 transition"
-                                    variant="pashmak"
+                                    className="mt-4 w-full py-2 font-medium rounded-md transition"
+                                    variant="warning"
                                     onClick={() =>
                                         handleRemoveItemFromCart(
                                             parseInt(params.id as string)

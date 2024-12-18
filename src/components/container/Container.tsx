@@ -12,7 +12,7 @@ function Container({ children }: IContainer) {
         // restituisce un div con le classi Tailwind `container` e `mx-auto`
         // `container` definisce uno stile predefinito di Tailwind CSS per il contenitore
         // `mx-auto` centra il contenitore orizzontalmente
-        <div className="container mx-auto">
+        <div className="container mx-auto ">
             {/* rende i figli passati al componente all'interno del div */}
             {children}
         </div>
