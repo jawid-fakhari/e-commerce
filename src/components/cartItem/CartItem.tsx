@@ -25,34 +25,44 @@ function CartItem({ id, quantity }: ICartItem) {
     });
 
     return (
-        <div className="flex items-start gap-x-7 my-5">
-            <Link to={`/product/${id}`}>
-                <img className="rounded w-1/4" src={product?.image} alt="" />
+        <div className="flex items-start gap-x-6 my-6 border-b pb-4">
+            <Link to={`/product/${id}`} className="block">
+                <img
+                    className="rounded-lg w-fit h-24 object-cover"
+                    src={product?.image}
+                    alt={product?.title}
+                />
             </Link>
-            <div className="">
-                <h1 className="font-semibold">{product?.title}</h1>
-                <Button
-                    className="w-full my-1"
-                    variant="primary"
-                    onClick={() => handleIncreaseProductQty(id)}
-                >
-                    +
-                </Button>
-                <Button
-                    className="w-full my-1"
-                    variant="secondary"
-                    onClick={() => handleDecreaseProductQty(id)}
-                >
-                    -
-                </Button>
-                <Button
-                    className="w-full my-1"
-                    variant="warning"
-                    onClick={() => handleRemoveItemFromCart(id)}
-                >
-                    🗑️
-                </Button>
-                <div className=" w-full px-10 border-b-2 my-2">{quantity}</div>
+            <div className="flex-1">
+                <h1 className="font-semibold text-lg text-gray-800">
+                    {product?.title}
+                </h1>
+                <div className="mt-3 space-y-2">
+                    <Button
+                        className="w-full py-2 font-medium rounded-md transition"
+                        variant="primary"
+                        onClick={() => handleIncreaseProductQty(id)}
+                    >
+                        +
+                    </Button>
+                    <Button
+                        className="w-full py-2 font-medium rounded-md transition"
+                        variant="secondary"
+                        onClick={() => handleDecreaseProductQty(id)}
+                    >
+                        -
+                    </Button>
+                    <Button
+                        className="w-full py-2 font-medium rounded-md transition"
+                        variant="warning"
+                        onClick={() => handleRemoveItemFromCart(id)}
+                    >
+                        🗑️
+                    </Button>
+                </div>
+                <div className="w-full px-4 py-2 mt-3 border-t text-center font-medium text-gray-700">
+                    Quantity: {quantity}
+                </div>
             </div>
         </div>
     );

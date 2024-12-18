@@ -3,7 +3,7 @@ import axios from "axios";
 
 //creare un basUrl usando il metodo create di axios e salvare il root del api in un variabile
 const client = axios.create({
-    baseURL: "http://localhost:3000"
+    baseURL: "https://fakestoreapi.com"
 })
 
 //creaer un async function che prende il baseUrl da func del client e aggiunge la parte finale del api
