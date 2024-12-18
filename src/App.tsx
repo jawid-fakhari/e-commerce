@@ -9,22 +9,23 @@ import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Login from "./pages/login/Login";
 
 function App() {
-  return (
-    <ShoppingCartProvider>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/login" element={<Login />} />
+    return (
+        <ShoppingCartProvider>
+            <Layout>
+                {/* Layout contiene Navbar component */}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/store" element={<Store />} />
+                    <Route path="/product/:id" element={<Product />} />
+                    <Route path="/login" element={<Login />} />
 
-          <Route element={<PrivateRoute />}>
-            <Route path="/cart" element={<Cart />} />
-          </Route>
-        </Routes>
-      </Layout>
-    </ShoppingCartProvider>
-  );
+                    <Route element={<PrivateRoute />}>
+                        <Route path="/cart" element={<Cart />} />
+                    </Route>
+                </Routes>
+            </Layout>
+        </ShoppingCartProvider>
+    );
 }
 
 export default App;
