@@ -32,7 +32,7 @@ function Product() {
     }, []);
 
     return (
-        <div className="bg-gray-50 py-6">
+        <div className="my-20">
             <Container>
                 <div className="h-auto shadow-md mt-4 grid grid-cols-12 bg-white rounded-lg overflow-hidden">
                     <div className="col-span-4 p-6 flex flex-col items-center">

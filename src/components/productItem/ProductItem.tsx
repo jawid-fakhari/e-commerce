@@ -6,9 +6,9 @@ type TProductItem = IProduct;
 function ProductItem({ title, price, image }: TProductItem) {
     return (
         <div className="w-[350px] flex flex-col gap-2 mb-8">
-            <div className="w-[350px] h-[355px] bg-gray-100 flex items-center justify-center rounded-sm overflow-hidden">
+            <div className="w-[350px] h-[355px] bg-gray-100 flex items-center justify-center rounded-md overflow-hidden">
                 <img
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain p-2"
                     src={image}
                     alt={title}
                 />
