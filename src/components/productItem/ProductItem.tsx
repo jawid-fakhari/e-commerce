@@ -3,20 +3,29 @@ import { IProduct } from "../../type/Servers";
 //product item type è la stessa del type di products
 type TProductItem = IProduct;
 
-function ProductItem({ title, price, image, description }: TProductItem) {
+function ProductItem({ title, price, image }: TProductItem) {
     return (
-        <div className="shadow-lg border rounded-lg overflow-hidden bg-white transition hover:shadow-xl">
-            <img className="w-full h-48 object-cover" src={image} alt={title} />
-            <div className="p-4">
-                <h3 className="text-lg font-bold text-gray-800 mb-2">
+        <div className="w-[350px] flex flex-col gap-2 mb-8">
+            <div className="w-[350px] h-[355px] bg-gray-100 flex items-center justify-center rounded-sm overflow-hidden">
+                <img
+                    className="w-full h-full object-contain"
+                    src={image}
+                    alt={title}
+                />
+            </div>
+            <div className="mt-2">
+                <p className="text-[16px] font-medium text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">
                     {title}
-                </h3>
-                <p className="text-xl font-semibold text-blue-600 mb-3">
+                </p>
+                <p className="text-[16px] font-medium text-purple-600">
                     {price}$
                 </p>
-                <p className="text-gray-600 text-sm line-clamp-2">
-                    {description}
-                </p>
+            </div>
+            <hr className="border-gray-300 my-2" />
+            <div className="flex gap-4">
+                <span className="text-gray-600">Icon</span>
+                <span className="text-gray-600">Icon</span>
+                <span className="text-gray-600">Icon</span>
             </div>
         </div>
     );

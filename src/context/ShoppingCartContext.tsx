@@ -2,7 +2,7 @@
 import { createContext, useContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-// Defining the interface for the ShoppingCartProvider props
+// Definizione delle interfacce: Queste interfacce definiscono la struttura dei dati e dei props utilizzati nel componente.
 interface ShoppingCartProvider {
     children: React.ReactNode;
 }
@@ -26,16 +26,16 @@ interface ShoppingCartContext {
     handleLogout: () => void;
 }
 
-// Creating a context for the shopping cart
-// export const ShoppingCartContext = createContext<ShoppingCartContext>( {cartItems: []});
-// anche in questo modo possiamo settare il type del object che è più pulito
+//Creazione del contesto:
+// Viene creato un contesto React per il carrello della spesa.
 export const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
+//Hook personalizzato: Questo hook personalizzato permette un facile accesso al contesto in altri componenti.
 export const useShoppingCartContext = () => {
     return useContext(ShoppingCartContext);
 };
 
-// Defining the IShoppingCartProvider component
+// Componente ShoppingCartProvider:Questo è il componente principale che gestisce lo stato del carrello e fornisce funzionalità relative.********
 export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
     const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
         "cartItems",
