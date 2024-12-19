@@ -25,42 +25,41 @@ function CartItem({ id, quantity }: ICartItem) {
     });
 
     return (
-        <div className="flex items-start gap-x-6 my-6 border-b pb-4">
+        <div className="flex items-start gap-6 my-6 pb-6 ">
             <Link to={`/product/${id}`} className="block">
                 <img
-                    className="rounded-lg w-fit h-24 object-cover"
+                    className="rounded-md w-40 h-48"
                     src={product?.image}
                     alt={product?.title}
                 />
             </Link>
             <div className="flex-auto">
-                <h1 className="font-semibold text-lg text-gray-800">
+                <p className="font-semibold text-xl text-gray-800">
                     {product?.title}
-                </h1>
-                <div className="flex flex-col mt-3 space-y-2">
+                </p>
+                <div className="flex flex-col mt-4 gap-y-3">
                     <Button
-                        className="w-1/3 py-2 font-medium rounded-md transition"
                         variant="primary"
+                        className="w-1/3 py-2 font-medium rounded-md "
                         onClick={() => handleIncreaseProductQty(id)}
                     >
                         +
                     </Button>
                     <Button
-                        className="w-1/3 py-2 font-medium rounded-md transition"
-                        variant="secondary"
+                        variant="primary"
+                        className="w-1/3 py-2 font-medium rounded-md"
                         onClick={() => handleDecreaseProductQty(id)}
                     >
                         -
                     </Button>
                     <Button
-                        className="w-1/3 py-2 font-medium rounded-md transition"
                         variant="warning"
+                        className="w-1/3 py-2 font-medium rounded-md "
                         onClick={() => handleRemoveItemFromCart(id)}
                     >
                         🗑️
                     </Button>
-
-                    <div className="w-full px-4 py-2 mt-3 border-t text-center font-medium text-gray-700">
+                    <div className="w-full mt-4 text-start font-medium text-gray-700">
                         Quantity: {quantity}
                     </div>
                 </div>

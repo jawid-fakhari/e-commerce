@@ -8,7 +8,12 @@ function Cart() {
 
     return (
         <Container>
-            <div className="bg-white p-6 rounded-lg shadow-lg mt-6 w-1/2 mx-auto">
+            <div
+                className="
+            bg-gradient-to-r from-blue-50 to-purple-50 
+            p-6 rounded-lg w-1/2 mx-auto my-20
+            "
+            >
                 <div className="space-y-4">
                     {cartItems.map((item) => (
                         <CartItem key={item.id} {...item} />

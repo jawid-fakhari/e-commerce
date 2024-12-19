@@ -14,6 +14,7 @@ function App() {
             <Layout>
                 {/* Layout contiene Navbar component */}
                 <Routes>
+                    <Route path="/" element={<Store />} />
                     <Route path="/store" element={<Store />} />
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/login" element={<Login />} />

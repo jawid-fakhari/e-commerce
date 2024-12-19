@@ -34,10 +34,10 @@ function Product() {
     return (
         <div className="my-20">
             <Container>
-                <div className="h-auto shadow-md mt-4 grid grid-cols-12 bg-white rounded-lg overflow-hidden">
+                <div className="h-auto bg-gradient-to-r from-blue-50 to-purple-50 mt-4 grid grid-cols-12 rounded-lg overflow-hidden">
                     <div className="col-span-4 p-6 flex flex-col items-center">
                         <img
-                            className="w-full h-64 object-cover rounded-lg"
+                            className="w-40 h-48  rounded-lg"
                             src={product?.image}
                             alt={product?.title}
                         />
