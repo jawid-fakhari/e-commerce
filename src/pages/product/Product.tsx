@@ -16,7 +16,6 @@ function Product() {
 
     const {
         handleIncreaseProductQty,
-        cartItems,
         handleDecreaseProductQty,
         getProductQty,
         handleRemoveItemFromCart,
