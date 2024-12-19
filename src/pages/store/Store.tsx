@@ -4,7 +4,6 @@ import Container from "../../components/container/Container";
 import { Link } from "react-router-dom";
 import { getProducts } from "../../services/api";
 import { IProduct } from "../../type/Servers";
-import Footer from "../../components/footer/Footer";
 
 function Store() {
     const [products, setProducts] = useState<IProduct[]>([]);

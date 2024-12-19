@@ -1,4 +1,5 @@
 import { IProduct } from "../../type/Servers";
+import { GoHeart, GoComment, GoShareAndroid } from "react-icons/go";
 
 //product item type è la stessa del type di products
 type TProductItem = IProduct;
@@ -23,9 +24,15 @@ function ProductItem({ title, price, image }: TProductItem) {
             </div>
             <hr className="border-gray-300 my-2" />
             <div className="flex gap-4">
-                <span className="text-gray-600">Icon</span>
-                <span className="text-gray-600">Icon</span>
-                <span className="text-gray-600">Icon</span>
+                <span className="text-gray-600">
+                    <GoHeart />
+                </span>
+                <span className="text-gray-600">
+                    <GoComment />
+                </span>
+                <span className="text-gray-600">
+                    <GoShareAndroid />
+                </span>
             </div>
         </div>
     );
