@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 import Container from "../container/Container";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
-import Button from "../button/Button";
-import { BsRCircle } from "react-icons/bs";
+import { BsRCircle, BsSearch } from "react-icons/bs";
 
 function Navbar() {
-    const { getCartItemsQty, handleLogout } = useShoppingCartContext();
+    const { getCartItemsQty } = useShoppingCartContext();
     return (
-        <div className="h-16 border-b bg-gradient-to-r from-blue-50 to-purple-50 flex items-center">
+        <div className="h-16 border-b bg-gradient-to-r from-blue-50 to-purple-50 flex items-center px-10">
             <Container>
                 <div className="flex justify-between items-center gap-6">
-                    <div className="left-side flex  w-full">
+                    <div className="left-side flex">
                         <ul className="flex gap-6 items-center">
                             <p className="font-mono italic font-bold text-lg text-purple-600 flex">
                                 Shop
@@ -55,21 +54,21 @@ function Navbar() {
                                     />
                                     <button
                                         type="submit"
-                                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-purple-500 text-white h-6 px-3 rounded-md hover:bg-purple-600 transition"
+                                        className="absolute right-2 top-1/2 -translate-y-1/2 text-purple-600 text-[16px] font-medium bg-transparent hover:opacity-75 transition"
                                     >
-                                        Search
+                                        <BsSearch className="w-5 h-5" />
                                     </button>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
-                        <Button
+                        {/* <Button
                             className="bg-purple-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-purple-600 transition"
                             onClick={handleLogout}
                         >
                             Logout
-                        </Button>
+                        </Button> */}
                         <Link to={"/cart"} className="relative">
                             <button className="text-2xl text-gray-800 hover:text-purple-600 transition">
                                 🛒

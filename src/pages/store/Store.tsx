@@ -18,7 +18,7 @@ function Store() {
     return (
         <>
             <Container>
-                <div className="flex flex-wrap justify-center gap-8 mt-10">
+                <div className="flex flex-wrap justify-center gap-8 my-20">
                     {products.map((item) => (
                         <Link
                             key={item.id}
@@ -30,7 +30,6 @@ function Store() {
                     ))}
                 </div>
             </Container>
-            <Footer />
         </>
     );
 }
